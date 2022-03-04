@@ -23,6 +23,11 @@
             alt="Movie Poster"
             class="movie-poster"
           />
+          <NuxtLink
+            class="more-info-button"
+            :to="{ name: 'movies-movieid', params: { movieid: movie.id } }"
+            >More Info</NuxtLink
+          >
         </div>
       </div>
     </section>
@@ -84,7 +89,7 @@ section:first-child {
 }
 
 section:not(first-child) {
-  padding: 3em 2.5em 1em;
+  padding: 3em 2.5em 0;
 }
 
 .movie-banner {
@@ -125,6 +130,17 @@ button {
   cursor: pointer;
 }
 
+.more-info-button {
+  background-color: var(--red);
+  color: var(--white);
+  border-radius: 0.5em;
+  padding: 0.7em 2em;
+}
+
+.more-info-button:hover {
+  opacity: .9;
+}
+
 .cta-white {
   border-radius: 0.5em;
   color: var(--black);
@@ -139,12 +155,18 @@ button {
 .movie-grid {
   display: flex;
   gap: 1em;
-  overflow-x: auto; 
+  overflow-x: auto;
+  height: 30em;
 }
 
 .movie-poster {
   max-width: 15em;
   border-radius: 0.5em;
+  margin-bottom: 1.5em;
+}
+
+.movie {
+  position: relative;
 }
 
 .cta-transparent {

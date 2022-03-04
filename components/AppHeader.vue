@@ -10,6 +10,7 @@
         <li><NuxtLink to="/Movies">Movies</NuxtLink></li>
       </ul>
     </nav>
+    <input type="search" class="search" placeholder="🍿 Search Movie..." />
   </header>
 </template>
 <script>
@@ -24,6 +25,27 @@ header {
   position: fixed;
   z-index: 99;
   width: 100%;
+}
+
+.search {
+  border: none;
+  height: 2.25em;
+  width: 2.25em;
+  border-radius: 1.125em;
+  padding-left: 2.25em;
+
+  background: url("~assets/search.svg") no-repeat 0.625em/1em, var(--white);
+  cursor: pointer;
+
+  transition-property: width, border-radius, box-shadow;
+  transition-duration: 300ms;
+}
+
+.search:focus {
+  width: 12.5em;
+  border-radius: 0.25em;
+  box-shadow: 0 0 0 2px var(--red);
+  cursor: auto;
 }
 
 .logo {
