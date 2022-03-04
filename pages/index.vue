@@ -2,16 +2,25 @@
   <div>
     <section>
       <img
-        :src="'https://image.tmdb.org/t/p/original' + movies[0].poster_path"
+        :src="'https://image.tmdb.org/t/p/original' + movies[3].poster_path"
         alt="Movie Poster"
         class="movie-banner"
       />
-      <h1>{{ movies[0].original_title }}</h1>
-      <p>{{ movies[0].overview }}</p>
+      <h1>🎥 {{ movies[3].original_title }}</h1>
+      <p class="synopsis">{{ movies[3].overview }}</p>
       <div class="button-container">
-        <button class="cta-white">Add to List</button>
-        <button class="cta-transparent">More information</button>
+        <button class="cta-white">🍿 Add to List</button>
+        <button class="cta-transparent">📖 More information</button>
       </div>
+    </section>
+    <section>
+      <h2>🎉 Latest</h2>
+    </section>
+    <section>
+      <h2>🍿 Recommended</h2>
+    </section>
+    <section>
+      <h2>🎨 Trending</h2>
     </section>
   </div>
 </template>
@@ -37,7 +46,7 @@ export default {
 </script>
 
 <style scoped>
-section {
+section:first-child {
   height: 40em;
   padding: 0 2.5em;
   display: flex;
@@ -45,6 +54,10 @@ section {
   justify-content: center;
   object-fit: cover;
   position: relative;
+}
+
+section:not(first-child) {
+  padding: 3em 2.5em 1em;
 }
 
 .movie-banner {
@@ -55,7 +68,7 @@ section {
   position: absolute;
   left: 0;
   z-index: -1;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 h1,
@@ -68,7 +81,7 @@ h1 {
   font-size: 3rem;
 }
 
-p {
+.synopsis {
   font-size: 1.5rem;
   width: 100%;
   max-width: 30em;
@@ -101,15 +114,20 @@ button {
 }
 
 @media (max-width: 50em) {
-  section {
+  section:first-child {
     padding: 10em 1em;
   }
 
+  section:not(first-child) {
+    padding: 0 1em;
+  }
+
   h1 {
+    margin-top: 4em;
     font-size: 2.5rem;
   }
 
-  p {
+  .synopsis {
     font-size: 1.2rem;
   }
 }

@@ -6,8 +6,8 @@
     <nav>
       <ul>
         <li><NuxtLink to="/">Home</NuxtLink></li>
-        <li><NuxtLink to="/">Series</NuxtLink></li>
-        <li><NuxtLink to="/">Movies</NuxtLink></li>
+        <li><NuxtLink to="/Series">Series</NuxtLink></li>
+        <li><NuxtLink to="/Movies">Movies</NuxtLink></li>
       </ul>
     </nav>
   </header>
@@ -22,6 +22,7 @@ header {
   align-items: center;
   padding: 1em 2.5em;
   position: fixed;
+  z-index: 99;
   width: 100%;
 }
 
@@ -40,13 +41,10 @@ ul {
 
 ul li > a {
   color: var(--white);
+  cursor: pointer;
 }
 
-ul li:first-child {
-  margin-left: auto;
-}
-
-@media(max-width: 40em) {
+@media (max-width: 40em) {
   header {
     padding: 1em;
   }
