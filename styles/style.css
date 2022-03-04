@@ -4,7 +4,20 @@
   --black: #000;
   --dark-grey: #141414;
   --grey: grey;
-  --transparent: rgba(109,109,110,0.7);
+  --transparent: rgba(109, 109, 110, 0.7);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--red);
+  border-radius: 0.5em;
 }
 
 * {
@@ -20,4 +33,13 @@ body {
   background-color: var(--dark-grey);
   padding: 0;
   margin: 0;
+}
+
+.layout-enter-active,
+.layout-leave-active {
+  transition: opacity 0.5s;
+}
+.layout-enter,
+.layout-leave-active {
+  opacity: 0;
 }

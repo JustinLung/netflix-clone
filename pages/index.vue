@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="movies.length > 0">
     <section>
       <img
         :src="'https://image.tmdb.org/t/p/original' + movies[0].poster_path"
@@ -8,10 +8,10 @@
       />
       <h1>🎥 {{ movies[0].original_title }}</h1>
       <p class="synopsis">{{ movies[0].overview }}</p>
-      <div class="button-container">
+      <form class="button-container">
         <button class="cta-white">🍿 Add to List</button>
         <button class="cta-transparent">📖 More information</button>
-      </div>
+      </form>
       <div class="gradient"></div>
     </section>
     <section>
@@ -42,6 +42,10 @@
 
 <script>
 export default {
+  transition: {
+    name: "layout",
+    mode: "out-in",
+  },
   data() {
     return {
       movies: [],
@@ -52,9 +56,7 @@ export default {
       "https://api.themoviedb.org/3/movie/now_playing?api_key=5b75818e63dfdb396cadedf77425b334&language=en-US&page=1"
     )
       .then((res) => res.json())
-      .then((data) => {
-        return data.results;
-      });
+      .then((data) => data.results);
     console.log(this.movies);
   },
 };
@@ -71,9 +73,10 @@ section:first-child {
   position: relative;
 }
 
-.gradient {
+section:first-child::after {
+  content: "";
   position: absolute;
-  bottom: -1%;
+  bottom: 0;
   left: 0;
   height: 0;
   padding-bottom: calc(33.5% - 92px + 30px);
@@ -138,7 +141,7 @@ button {
 }
 
 .more-info-button:hover {
-  opacity: .9;
+  opacity: 0.9;
 }
 
 .cta-white {
@@ -157,6 +160,10 @@ button {
   gap: 1em;
   overflow-x: auto;
   height: 30em;
+}
+
+.movie-grid::-webkit-scrollbar {
+  height: 5px;
 }
 
 .movie-poster {
