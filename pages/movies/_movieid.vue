@@ -19,7 +19,7 @@
         <p class="popularity-text">⭐ Rating: {{ movie.vote_average }}</p>
         <h2>{{ movie.original_title }}</h2>
         <p>{{ movie.overview }}</p>
-        <p class="genre">Genre: {{movie.genres}}</p>
+        <p class="genre">✨Genre: {{movie.genres}}</p>
       </div>
     </section>
   </div>
