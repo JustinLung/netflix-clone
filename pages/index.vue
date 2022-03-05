@@ -31,10 +31,15 @@
         </div>
       </div>
     </section>
+
     <section>
-      <h2>🍿 Recommended</h2>
+      <h2>🍿 Trending</h2>
       <div id="movie-grid" class="movie-grid">
-        <div class="movie" v-for="(randomMovie, index) in randomMovies" :key="index">
+        <div
+          class="movie"
+          v-for="(randomMovie, index) in randomMovies"
+          :key="index"
+        >
           <img
             :src="`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`"
             alt="Movie Poster"
@@ -42,7 +47,35 @@
           />
           <NuxtLink
             class="more-info-button"
-            :to="{ name: 'movies-movieid', params: { movieid: randomMovie.id } }"
+            :to="{
+              name: 'movies-movieid',
+              params: { movieid: randomMovie.id },
+            }"
+            >More Info</NuxtLink
+          >
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>📽 Upcoming</h2>
+      <div id="movie-grid" class="movie-grid">
+        <div
+          class="movie"
+          v-for="(upcomingMovie, index) in upcomingMovies"
+          :key="index"
+        >
+          <img
+            :src="`https://image.tmdb.org/t/p/w500${upcomingMovie.poster_path}`"
+            alt="Movie Poster"
+            class="movie-poster"
+          />
+          <NuxtLink
+            class="more-info-button"
+            :to="{
+              name: 'movies-movieid',
+              params: { movieid: upcomingMovie.id },
+            }"
             >More Info</NuxtLink
           >
         </div>
@@ -61,6 +94,7 @@ export default {
     return {
       movies: [],
       randomMovies: [],
+      upcomingMovies: [],
     };
   },
   async fetch() {
@@ -72,11 +106,17 @@ export default {
     console.log(this.movies);
 
     this.randomMovies = await fetch(
-      "https://api.themoviedb.org/3/movie/now_playing?api_key=5b75818e63dfdb396cadedf77425b334&language=en-US&page=2"
+      "https://api.themoviedb.org/3/movie/popular?api_key=5b75818e63dfdb396cadedf77425b334&language=en-US&page=1"
     )
       .then((res) => res.json())
       .then((data) => data.results);
-    console.log(this.randomMovies);
+
+    this.upcomingMovies = await fetch(
+      "https://api.themoviedb.org/3/movie/upcoming?api_key=5b75818e63dfdb396cadedf77425b334&language=en-US&page=1"
+    )
+      .then((res) => res.json())
+      .then((data) => data.results);
+    console.log(this.upcomingMovies);
   },
 };
 </script>

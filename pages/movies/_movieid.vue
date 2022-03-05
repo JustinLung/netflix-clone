@@ -19,7 +19,7 @@
         <p class="popularity-text">⭐ Rating: {{ movie.vote_average }}</p>
         <h2>{{ movie.original_title }}</h2>
         <p>{{ movie.overview }}</p>
-        <p>{{movie.genres}}</p>
+        <p class="genre">Genre: {{movie.genres}}</p>
       </div>
     </section>
   </div>
@@ -96,6 +96,10 @@ p {
   margin: 0;
   max-width: 30em;
   font-size: 1.3rem;
+}
+
+.genre {
+  padding-top: 1em;
 }
 
 .movie-banner {
