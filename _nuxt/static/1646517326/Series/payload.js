@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/Series", {data:[{}],fetch:{"0":{series:[]}},mutations:void 0});
