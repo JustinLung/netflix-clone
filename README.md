@@ -1,5 +1,5 @@
 # 🍿 Netflix Clone
-A Netflix clone made with Nuxtjs and TMDB API.
+A Netflix clone made with Nuxtjs and The Movie Database API.
 
 ## Build Setup
 
