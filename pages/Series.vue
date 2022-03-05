@@ -7,5 +7,13 @@ export default {
     name: "layout",
     mode: "out-in",
   },
+  data() {
+    return {
+      series: [],
+    };
+  },
+  async fetch() {
+
+  },
 };
 </script>

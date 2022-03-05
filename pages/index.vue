@@ -95,6 +95,7 @@ export default {
       movies: [],
       randomMovies: [],
       upcomingMovies: [],
+      series: [],
     };
   },
   async fetch() {
@@ -103,7 +104,6 @@ export default {
     )
       .then((res) => res.json())
       .then((data) => data.results);
-    console.log(this.movies);
 
     this.randomMovies = await fetch(
       "https://api.themoviedb.org/3/movie/popular?api_key=5b75818e63dfdb396cadedf77425b334&language=en-US&page=1"
@@ -116,7 +116,6 @@ export default {
     )
       .then((res) => res.json())
       .then((data) => data.results);
-    console.log(this.upcomingMovies);
   },
 };
 </script>
